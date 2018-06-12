@@ -27,7 +27,7 @@ before_script:
 #  - psql -c "CREATE USER \"wbooks-api\" WITH PASSWORD 'wbooks-api';" -U postgres
 #  - psql -c "DROP DATABASE IF EXISTS \"wBoooksApi_test\";" -U postgres
 #  - psql -c "CREATE DATABASE \"wBoooksApi_test\" ENCODING 'utf8';" -U postgres
-  - psql -c "CREATE USER -s \"wbooks-api\" WITH PASSWORD 'wbooks-api';" -U postgres
+  - psql -c "CREATE USER \"wbooks-api\" WITH PASSWORD 'wbooks-api';" -U postgres
   - psql -c "GRANT ALL ON DATABASE \"wBooksApi_test\" TO \"wbooks-api\"" -U postgres
   - psql -c "GRANT ALL ON DATABASE \"wBooksApi_development\" TO \"wbooks-api\"" -U postgres
   - bundle exec rake db:setup
