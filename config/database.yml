@@ -58,7 +58,7 @@ test:
   <<: *default
   database: wBoooksApi_test
   username: wbooks-api
-  password: wbooks-api
+  password: ENV.fetch(:WBOOOKSAPI_DATABASE_PASSWORD, 'wbooks-api')
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -83,4 +83,4 @@ production:
   <<: *default
   database: wBoooksApi_production
   username: wbooks-api
-  password: wbooks-api
+  password: <%= ENV['WBOOOKSAPI_DATABASE_PASSWORD'] %>
