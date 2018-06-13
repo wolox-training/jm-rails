@@ -1,0 +1,2 @@
+class AuthenticationManager
+end

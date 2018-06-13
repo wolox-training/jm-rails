@@ -1,0 +1,2 @@
+class AuthenticableEntity
+end
