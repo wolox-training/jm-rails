@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class SessionsController < ApplicationController
+    class SessionsController < ApiController
       skip_before_action :current_user, :authenticate_request, except: %i[renew invalidate_all]
 
       def create
