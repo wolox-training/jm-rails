@@ -3,13 +3,13 @@
 module Api
   module V1
     class SessionsController < ApplicationController
-      skip_before_action :current_user, :authenticate_request, except: [:renew, :invalidate_all]
+      skip_before_action :current_user, :authenticate_request, except: %i[renew invalidate_all]
 
       def create
         if authenticated_user?
           token_data = AuthenticableEntity.generate_access_token(user)
           render json: {
-              access_token: token_data[:token], renew_id: token_data[:renew_id]
+            access_token: token_data[:token], renew_id: token_data[:renew_id]
           }, status: :ok
         else
           render_error('Invalid email or password', :unauthorized)
@@ -26,9 +26,7 @@ module Api
         elsif !authentication_manager.able_to_renew?
           render_error('Access token is not valid anymore', :unauthorized)
         else
-          decoded_auth_token = authentication_manager.decoded_auth_token
-          access_token = authentication_manager.renew_access_token(decoded_auth_token)
-          #access_token = authentication_manager.renew_access_token(current_user)
+          access_token = authentication_manager.renew_access_token(current_user)
           render json: { access_token: access_token }, status: :ok
         end
       end
@@ -39,7 +37,7 @@ module Api
         if current_user.save
           head :ok
         else
-          render json: { error: 'Error invalidating all tokens' }, status: 500
+          render json: { error: 'Error invalidating all tokens' }, status: :internal_server_error
         end
       end
 

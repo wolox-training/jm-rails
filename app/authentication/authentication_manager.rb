@@ -15,7 +15,8 @@ class AuthenticationManager
   end
 
   def current_user
-    return nil unless decoded_auth_token.present?
+    # return nil unless decoded_auth_token.present?
+    return nil if decoded_auth_token.blank?
     @current_user ||= User.find_by(id: decoded_auth_token[:user_id])
   end
 
@@ -75,7 +76,8 @@ class AuthenticationManager
 
   def authorization_header
     return @authorization_header if defined? @authorization_header
-    return nil unless headers['Authorization'].present?
+    # return nil unless headers['Authorization'].present?
+    return nil if headers['Authorization'].blank?
     @authorization_header = headers['Authorization'].split(' ').last
   end
 end
