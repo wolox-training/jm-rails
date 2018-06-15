@@ -43,6 +43,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '~> 3.7'
   gem 'rubocop', '~> 0.57.2'
+  gem 'faker','~> 1.8.7'
 end
 
 group :development do
