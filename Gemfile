@@ -80,3 +80,6 @@ gem 'versionist', '~> 1.7.0'
 
 # OAuth JSON Web Token Implementation
 gem 'jwt', '~> 2.1.0'
+
+# ActiveModelSerializers brings convention over configuration to the JSON generation
+gem 'active_model_serializers', '~> 0.10.0'
