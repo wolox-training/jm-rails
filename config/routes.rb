@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'books/index'
-  get 'books/show'
   devise_for :users
 
   # API Endpoints
@@ -20,8 +18,7 @@ Rails.application.routes.draw do
     end
 
     # Books
-    get 'books/index'
-    get 'books/show'
+    resources :books, only: %i[index show]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
