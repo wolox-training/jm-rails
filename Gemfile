@@ -83,3 +83,6 @@ gem 'jwt', '~> 2.1.0'
 
 # ActiveModelSerializers brings convention over configuration to the JSON generation
 gem 'active_model_serializers', '~> 0.10.0'
+
+# Simple Pagination with Wor::Paginate
+gem 'wor-paginate', '~> 0.1.2'
