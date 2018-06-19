@@ -2,7 +2,7 @@
 
 class ApiController < ApplicationController
   rescue_from ActionController::ParameterMissing, with: :render_nothing_bad_req
-  rescue_from ActiveRecord::RecordNotFound, with: :render_nothing_bad_req
+  # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   protect_from_forgery with: :null_session
   before_action :current_user, :authenticate_request
 
