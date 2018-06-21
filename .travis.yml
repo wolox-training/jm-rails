@@ -27,5 +27,5 @@ cache:
 deploy:
   api_key:
     secure: MwnYDbCIo4TLj0dT/fcKAp3z0jzS3Lv9MfUWk3LcrQvmEMPiPEkmRnKsrQ21c7tgF2as3l6cjdbSH5hC1IDkS01JjASClCwUQTNMEJVHYjk6VUWGbpxtd+DSsvxBkmMIz2VgAVCP2Mp47ofdJ+DymwKC/zrWTMZR9FTLWZN/HNmwgDYf1KEmGSUarASWRCmW8Jci96+b5EMdKxn7N8zbIjZqmJHBwBpF2XPr5QmsATluCZLjDGTtslEhKjhjBVJgNNDJMhd88yRQK9CkfDuMoKVvUpVs4mxC1M0DuUp4rExqldurF00Wq3uBcqv269gZGqP5Qt+LXpcnsBNS5XK+TBD++R6/yJoNXvn+YLAubjHCAvbyea3umIdsxuO3O9/eCKCyKWFtihkjdnmuL0tT2xKUSZ3vAhUrglb+Snp9kr4ETkNkOrVAb985nHl3/NZe9wDhHE7yJfL91LgRZ4s6K853716aEtSUJJpfQBFb/wQMyfiAEVzVuQoOz3Ib2rAq8ooM5vwCun2Ce8YnDx6aNtv1LAGKiWsUVsFXpUcB0GS1qUgDPVNGX+p8FRBOt12jfqrxenduk3Y/xXUS5v30+Sjuayf8eDmHR6TOR2rz0OkfSfPIhrJyeynymJcKCYyBq6IEpkJWVodplq8shW654ef7v1Mb1Ev2r3HRMe1JOlg=
-    run:
-    - "rake db:migrate"
+#    run:
+#    - "rake db:migrate"
