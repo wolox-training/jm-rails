@@ -1,46 +1,31 @@
 language: ruby
 rvm:
-  - 2.5.1
-
+- 2.5.1
 addons:
   code_climate:
     repo_token: 89943dcf9eece00c7e360730a4a6102b1ce29c1b9956186bf4801ad059169274
-
 env:
   global:
-    - RUBY_GC_MALLOC_LIMIT=90000000
-    - RUBY_GC_HEAP_FREE_SLOTS=200000
-    - SECURITY_SECRET_TOKEN=traviscitraviscitraviscitraviscitravisci
-
+  - RUBY_GC_MALLOC_LIMIT=90000000
+  - RUBY_GC_HEAP_FREE_SLOTS=200000
+  - SECURITY_SECRET_TOKEN=traviscitraviscitraviscitraviscitravisci
 services:
-  - postgresql
-#  - redis-server
-
+- postgresql
 before_install:
-  - "echo '--colour' > ~/.rspec"
-  - "echo 'gem: --no-document' > ~/.gemrc"
-  # Solves rainbow issue: https://github.com/sickill/rainbow/issues/48
-  - gem update --system
-
+- echo '--colour' > ~/.rspec
+- 'echo ''gem: --no-document'' > ~/.gemrc'
+- gem update --system
 before_script:
-#  - cp config/database..travis.yml config/database.yml
-#  - psql -c "CREATE USER \"wbooks-api\" WITH PASSWORD 'wbooks-api';" -U postgres
-#  - psql -c "DROP DATABASE IF EXISTS \"wBoooksApi_test\";" -U postgres
-#  - psql -c "CREATE DATABASE \"wBoooksApi_test\" ENCODING 'utf8';" -U postgres
-  - psql -c "CREATE USER \"wbooks-api\" WITH PASSWORD 'wbooks-api';" -U postgres
-  - psql -c "ALTER USER \"wbooks-api\" CREATEDB;" -U postgres
-  - bundle exec rake db:setup
-  - bundle exec rake db:migrate
-
+- psql -c "CREATE USER \"wbooks-api\" WITH PASSWORD 'wbooks-api';" -U postgres
+- psql -c "ALTER USER \"wbooks-api\" CREATEDB;" -U postgres
+- bundle exec rake db:setup
+- bundle exec rake db:migrate
 script:
-#  - bundle exec rspec spec -fd
-  - bundle exec rubocop app spec -R --format simple
-#  - bundle exec scss-lint app/assets/stylesheets/
-
-#notifications:
-#  email:
-#    recipients:
-#      - rails-bootstrap-dev@wolox.com.ar
-
+- bundle exec rubocop app spec -R --format simple
 cache:
   bundler: true
+deploy:
+  api_key:
+    secure: MwnYDbCIo4TLj0dT/fcKAp3z0jzS3Lv9MfUWk3LcrQvmEMPiPEkmRnKsrQ21c7tgF2as3l6cjdbSH5hC1IDkS01JjASClCwUQTNMEJVHYjk6VUWGbpxtd+DSsvxBkmMIz2VgAVCP2Mp47ofdJ+DymwKC/zrWTMZR9FTLWZN/HNmwgDYf1KEmGSUarASWRCmW8Jci96+b5EMdKxn7N8zbIjZqmJHBwBpF2XPr5QmsATluCZLjDGTtslEhKjhjBVJgNNDJMhd88yRQK9CkfDuMoKVvUpVs4mxC1M0DuUp4rExqldurF00Wq3uBcqv269gZGqP5Qt+LXpcnsBNS5XK+TBD++R6/yJoNXvn+YLAubjHCAvbyea3umIdsxuO3O9/eCKCyKWFtihkjdnmuL0tT2xKUSZ3vAhUrglb+Snp9kr4ETkNkOrVAb985nHl3/NZe9wDhHE7yJfL91LgRZ4s6K853716aEtSUJJpfQBFb/wQMyfiAEVzVuQoOz3Ib2rAq8ooM5vwCun2Ce8YnDx6aNtv1LAGKiWsUVsFXpUcB0GS1qUgDPVNGX+p8FRBOt12jfqrxenduk3Y/xXUS5v30+Sjuayf8eDmHR6TOR2rz0OkfSfPIhrJyeynymJcKCYyBq6IEpkJWVodplq8shW654ef7v1Mb1Ev2r3HRMe1JOlg=
+#    run:
+#    - "rake db:migrate"
