@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'support/authenticated_user'
 
 module Api
   module V1
@@ -28,7 +27,7 @@ module Api
       end
 
       describe 'GET #show' do
-        context 'When fetching a Book' do
+        context 'When fetching an existing Book' do
           let!(:book) { create(:book) }
           before do
             get :show, params: { id: book.id }
@@ -42,6 +41,14 @@ module Api
           it 'responses with status 200' do
             expect(response).to have_http_status(:ok)
           end
+        end
+
+        context 'When trying to fetch a non existing book'
+        before do
+          get :show, params: { id: -1 }
+        end
+        it 'responses with status 404' do
+          expect(response).to have_http_status(:not_found)
         end
       end
     end
