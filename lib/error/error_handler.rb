@@ -12,9 +12,9 @@ module Error
 
     private
 
-    def record_not_found(error)
-      json = Helpers::Render.json(:record_not_found, 404, error.to_s)
-      render json: json, status: 404
+    def record_not_found
+      json = Helpers::Render.json(:record_not_found)
+      render json: json, status: :not_found
     end
   end
 end

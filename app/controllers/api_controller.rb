@@ -3,7 +3,7 @@
 class ApiController < ActionController::API
   rescue_from ActionController::ParameterMissing, with: :render_nothing_bad_req
   # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-  protect_from_forgery with: :null_session
+  # protect_from_forgery with: :null_session
   before_action :current_user, :authenticate_request
   include Error::ErrorHandler
 
@@ -42,11 +42,11 @@ class ApiController < ActionController::API
   def status_for_response(code)
     case code
     when AuthenticationManager::NOT_AUTH_CODE
-      401
+      :unauthorized
     when AuthenticationManager::TOKEN_EXPIRED_CODE
-      401
+      :unauthorized
     when AuthenticationManager::SUCCESS_CODE
-      200
+      :ok
     end
   end
 
