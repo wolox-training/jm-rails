@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   # API Endpoints
   api_version(module: 'api/v1', path: { value: 'api/v1' }, defaults: { format: :json }) do
-    # User
     resources :users do
       collection do
         resources :sessions, only: [:create] do
@@ -18,10 +17,11 @@ Rails.application.routes.draw do
           end
         end
       end
+      resources :rents, only: %i[index create show destroy]
     end
 
-    # Books
-    resources :books, only: %i[index show]
+    resources :books, only: %i[index show] do
+      resources :rents, only: [:index]
+    end
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

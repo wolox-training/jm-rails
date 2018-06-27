@@ -7,7 +7,7 @@ module Api
       include Wor::Paginate
       def index
         @books = Book.all
-        render_paginated @books, each_serializer: Books::BookIndexSerializer
+        render_paginated @books, each_serializer: BookIndexSerializer
       end
 
       def show
