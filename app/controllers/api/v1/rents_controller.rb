@@ -19,6 +19,7 @@ module Api
         @rent = Rent.new(rent_params)
         if @rent.valid?
           @rent.save
+          RentMailer.new_rent_notification(@rent).deliver_now
           render json: @rent
         else
           render json: @rent.errors, status: :unprocessable_entity
