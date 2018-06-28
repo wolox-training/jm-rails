@@ -3,10 +3,10 @@
 
 A Training Rails app from [Wolox](https://www.wolox.co) following this  [Trello Board](https://trello.com/b/GNIKN0NC/training-rails-jhonathan-mu%C3%B1oz)
 
-## Authors
+### Author
 
 * [**Jhonathan Munoz**](jhonathan.munoz@wolox.cl) - *Wolox CL* 
 
-## Reviewers
+### Reviewers
 * Hugo David Farji - *Wolox AR*
 * Santiago Alcala  - *Wolox AR*
