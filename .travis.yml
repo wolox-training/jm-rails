@@ -11,6 +11,7 @@ env:
   - SECURITY_SECRET_TOKEN=traviscitraviscitraviscitraviscitravisci
 services:
 - postgresql
+- redis-server
 before_install:
 - echo '--colour' > ~/.rspec
 - 'echo ''gem: --no-document'' > ~/.gemrc'
