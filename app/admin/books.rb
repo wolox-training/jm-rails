@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ActiveAdmin.register Book do
   permit_params :genre, :author, :image, :title, :publisher, :year
 
@@ -19,5 +21,4 @@ ActiveAdmin.register Book do
   filter :title
   filter :publisher
   filter :year
-
 end
