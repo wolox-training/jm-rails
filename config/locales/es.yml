@@ -1,0 +1,22 @@
+es:
+  mail:
+    new_rent_notification:
+      subject: 'Has alquilado un libro en JM Bookstore'
+      greetings: 'Hola %{name}'
+      thanks: 'Gracias por usar JM Bookstore'
+      rent_order_placed: 'Este correo es para confirmar una orden reciente para alquilar un libro, colocada en %{created_at}'
+      book_info: 'Informacion del Libro'
+      rent_info: 'Informacion de Alquiler'
+  book:
+    title: 'Titulo'
+    author: 'Autor'
+    genre: 'Genero'
+    publisher: 'Publicador'
+    year: 'Año de publicacion'
+  rent:
+    from: 'Fecha de inicio'
+    to: 'Fecha termino'
+
+
+
+
