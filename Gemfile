@@ -86,3 +86,6 @@ gem 'active_model_serializers', '~> 0.10.0'
 
 # Simple Pagination with Wor::Paginate
 gem 'wor-paginate', '~> 0.1.2'
+
+# Simple, efficient background processing for Ruby.
+gem 'sidekiq', '~> 5.1.3'
