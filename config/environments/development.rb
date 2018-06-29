@@ -80,3 +80,4 @@ Rails.application.configure do
   config.active_job.queue_name_prefix = 'rent'
   config.active_job.queue_name_delimiter = '_'
 end
+
