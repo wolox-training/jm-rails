@@ -13,7 +13,7 @@ ActiveAdmin.register Rent do
     actions
   end
 
-  filter :user, as: :select, collection: User.all.pluck(:email, :id)
+  filter :user, as: :select, collection: -> { User.all.pluck(:email, :id) }
   filter :book
   filter :from
   filter :to
