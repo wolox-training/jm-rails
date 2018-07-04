@@ -19,7 +19,7 @@ module Error
     end
 
     def user_not_authorized
-      json = Helpers::Render.json(:user_not_authorized)
+      json = Helpers::Render.json(:unauthorized)
       render json: json, status: :unauthorized
     end
   end
