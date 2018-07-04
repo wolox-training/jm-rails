@@ -18,10 +18,10 @@ class RentPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    user.present? && user.id == @user_id.to_i
   end
 
   def index?
-    user.id == @user_id.to_i
+    user.present? && user.id == @user_id.to_i
   end
 end
