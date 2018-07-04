@@ -14,6 +14,13 @@ module WBoooksApi
     config.load_defaults 5.2
     config.autoload_paths << "#{Rails.root}/lib"
 
+    # set the default locale to English
+    config.i18n.default_locale = :en
+    # if a locale isn't found fall back to this default locale
+    config.i18n.fallbacks = true
+    # set the possible locales to English and Spanish
+    config.i18n.available_locales = %i[en es]
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
