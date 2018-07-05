@@ -90,5 +90,8 @@ gem 'wor-paginate', '~> 0.1.2'
 # Simple, efficient background processing for Ruby.
 gem 'sidekiq', '~> 5.1.3'
 
+# Pundit as authorization system
+gem 'pundit', '~> 1.1.0'
+
 # Create elegant backends for website administration with ActiveAdmin
 gem 'activeadmin'
