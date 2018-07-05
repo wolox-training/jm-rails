@@ -10,7 +10,7 @@ module Api
 
         if @suggestion.valid?
           @suggestion.save
-          render json: @suggestion
+          render json: @suggestion, status: :created
         else
           render json: @suggestion.errors, status: :unprocessable_entity
         end
