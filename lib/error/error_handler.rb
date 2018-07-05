@@ -7,6 +7,7 @@ module Error
     def self.included(clazz)
       clazz.class_eval do
         rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+        rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
       end
     end
 
@@ -15,6 +16,11 @@ module Error
     def record_not_found
       json = Helpers::Render.json(:record_not_found)
       render json: json, status: :not_found
+    end
+
+    def user_not_authorized
+      json = Helpers::Render.json(:unauthorized)
+      render json: json, status: :unauthorized
     end
   end
 end
