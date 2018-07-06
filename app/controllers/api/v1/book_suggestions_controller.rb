@@ -6,14 +6,10 @@ module Api
       skip_before_action :authenticate_request
       def create
         @suggestion = BookSuggestion.new(suggest_params)
-        @suggestion.user_id = current_user.id if current_user
-
-        if @suggestion.valid?
-          @suggestion.save
-          render json: @suggestion, status: :created
-        else
-          render json: @suggestion.errors, status: :unprocessable_entity
-        end
+        @suggestion.user = current_user
+        render json: @suggestion.errors, status: :unprocessable_entity if @suggestion.invalid?
+        @suggestion.save
+        render json: @suggestion, status: :created
       end
 
       def suggest_params
