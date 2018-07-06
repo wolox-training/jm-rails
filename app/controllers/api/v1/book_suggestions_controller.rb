@@ -7,8 +7,7 @@ module Api
       def create
         @suggestion = BookSuggestion.new(suggest_params)
         @suggestion.user = current_user
-        return render json: @suggestion, status: :created if @suggestion.save
-        render json: @suggestion.errors, status: :unprocessable_entity
+        render json: @suggestion, status: :created if @suggestion.save!
       end
 
       def suggest_params
