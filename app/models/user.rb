@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  has_many :rents, dependent: :destroy
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: [:google_oauth2]
   # Hooks
   before_validation :generate_verification_code, on: :create
 
@@ -12,5 +12,30 @@ class User < ApplicationRecord
     self.verification_code = AuthenticableEntity.verification_code
   end
 
-  has_many :rents, dependent: :destroy
+  def self.from_omniauth(auth)
+    user = find_or_create_by(provider: auth.provider, uid: auth.uid)
+    user.update(omniauth_params(auth.credentials))
+    user.update(omniauth_info_params(auth.info))
+    user.update(password: Devise.friendly_token[0, 20])
+    user.save!
+  end
+
+  private
+
+  def omniauth_credentials_params(params)
+    {
+      token: params.token,
+      expires: params.expires,
+      expires_at: params.expires_at,
+      refresh_token: params.refresh_token
+    }
+  end
+
+  def omniauth_info_params(params)
+    {
+      email: params.email,
+      last_name: params.last_name,
+      first_name: params.first_name
+    }
+  end
 end
