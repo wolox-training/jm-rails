@@ -12,17 +12,15 @@ class User < ApplicationRecord
     self.verification_code = AuthenticableEntity.verification_code
   end
 
-  def self.from_omniauth(auth)
-    user = find_or_create_by(provider: auth.provider, uid: auth.uid)
-    user.update(omniauth_params(auth.credentials))
-    user.update(omniauth_info_params(auth.info))
+  def self.create_from_omniauth(params)
+    user = find_or_create_by(provider: params.provider, uid: params.uid)
+    user.update(User.omniauth_credentials_params(params.credentials))
+    user.update(User.omniauth_info_params(params.info))
     user.update(password: Devise.friendly_token[0, 20])
-    user.save!
+    user
   end
 
-  private
-
-  def omniauth_credentials_params(params)
+  def self.omniauth_credentials_params(params)
     {
       token: params.token,
       expires: params.expires,
@@ -31,7 +29,7 @@ class User < ApplicationRecord
     }
   end
 
-  def omniauth_info_params(params)
+  def self.omniauth_info_params(params)
     {
       email: params.email,
       last_name: params.last_name,

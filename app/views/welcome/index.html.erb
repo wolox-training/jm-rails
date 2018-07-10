@@ -6,6 +6,10 @@
   <p>
     You are logged as <%= current_user.email %>
   </p>
+  <h3>
+    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+  </h3>
+
 </div>
 <footer>
   Made with Love by Jhonathan Munoz for Wolox CL
