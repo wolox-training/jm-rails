@@ -1,0 +1,49 @@
+body{
+
+  background: url("booksBlurred.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+}
+.container {
+  width: 500px;
+  margin: 100px auto;
+  padding: 20px;
+  background: transparentize(white,0.6);
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.75em;
+
+}
+
+
+h2 {
+  font-size: 1.25em;
+  letter-spacing: 8px;
+}
+
+h3 {
+  font-size: 1em;
+  letter-spacing: 5px;
+}
+
+p {
+  font-size: 1em;
+  font-style: italic;
+}
+
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: transparentize(black,0.9);
+  text-align: center;
+  font-style: italic;
+  color: gray;
+}
